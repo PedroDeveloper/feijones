@@ -300,7 +300,7 @@ export default {
 
             console.log(dadosTratados)
 
-            await axios.post('https://feijones.azurewebsites.net/api/cliente/', {
+            await axios.post('http://feijoneswebapi.azurewebsites.net/api/cliente/', {
                 Cpf: dadosTratados.cpf,
                 Cnpj: dadosTratados.cnpj,
                 Nome: dadosTratados.nome,

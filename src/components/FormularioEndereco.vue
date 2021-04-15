@@ -197,7 +197,7 @@ export default {
         },
 
         async enviarFormulario () {
-            await axios.post(`https://feijones.azurewebsites.net/api/clienteendereco/${this.chave}`, {
+            await axios.post(`http://feijoneswebapi.azurewebsites.net/api/clienteendereco/${this.chave}`, {
                 nome_end: this.nome_end,
                 tel_end: this.tel_end.replace(/[^A-Z0-9]/ig, ""),
                 cep: this.cep,
@@ -219,7 +219,7 @@ export default {
         },
 
         async editarFormulario () {
-            await axios.put(`https://feijones.azurewebsites.net/api/endereco/${this.enderecoDados.iD_end}`, { 
+            await axios.put(`http://feijoneswebapi.azurewebsites.net/api/endereco/${this.enderecoDados.iD_end}`, { 
                 iD_cliente: +this.enderecoDados.iD_cliente,
                 nome_end: this.nome_end,
                 tel_end: this.tel_end.replace(/[^A-Z0-9]/ig, ""),

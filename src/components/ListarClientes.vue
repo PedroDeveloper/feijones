@@ -172,13 +172,13 @@ export default {
 
     methods: {
         async buscarClientes () {
-           let result = await axios.get('https://feijones.azurewebsites.net/api/cliente/')
+           let result = await axios.get('http://feijoneswebapi.azurewebsites.net/api/cliente/')
            this.clientesListados = result.data
         //    console.log(this.clientesListados)
         },
 
         async mostrarEnderecos (id, flag) {
-            let result = await axios.get(`https://feijones.azurewebsites.net/api/clienteendereco/${id}`)
+            let result = await axios.get(`http://feijoneswebapi.azurewebsites.net/api/clienteendereco/${id}`)
             if (flag) {
                 this.mostrarEndereco = !this.mostrarEndereco
                 this.enderecoCliente = result.data
@@ -190,7 +190,7 @@ export default {
         },
 
         async deletarEndereco (iD_end, iD_cliente) {
-            await axios.delete(`https://feijones.azurewebsites.net/api/endereco/${iD_end}`)
+            await axios.delete(`http://feijoneswebapi.azurewebsites.net/api/endereco/${iD_end}`)
             this.mostrarEnderecos (iD_cliente)
         },
 
