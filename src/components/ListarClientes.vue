@@ -1,6 +1,32 @@
 <template>
     <v-container>
         <h1>Clientes Cadastrados</h1>
+
+        <!-- Animação de loading ao buscar dados na API -->
+        <v-dialog
+            v-model="loading"
+            persistent
+            min-width="200px"
+            max-width="500px"
+        >
+            <v-card
+                color="primary"
+                dark
+            >
+                <v-card-text>Buscando Dados...
+                    <v-progress-linear
+                        indeterminate
+                        color="white"
+                        class="mb-0"
+                    ></v-progress-linear>
+                </v-card-text>
+            </v-card>
+            
+        </v-dialog>
+
+        <!-- FIM Animação de Busca -->
+
+        <!-- Listagem de cliente -->
         <v-expansion-panels
             multiple
             class="mt-3"
@@ -168,17 +194,18 @@ export default {
         editarEndereco: false,
         editarEnderecoDados: {},
         enderecoCliente: [],
+        loading : false,
     }),
 
     methods: {
         async buscarClientes () {
-           let result = await axios.get('https://feijoneswebapi.azurewebsites.net/api/cliente/')
+           let result = await axios.get('https://feijones.azurewebsites.net/api/cliente/')
            this.clientesListados = result.data
         //    console.log(this.clientesListados)
         },
 
         async mostrarEnderecos (id, flag) {
-            let result = await axios.get(`https://feijoneswebapi.azurewebsites.net/api/clienteendereco/${id}`)
+            let result = await axios.get(`https://feijones.azurewebsites.net/api/clienteendereco/${id}`)
             if (flag) {
                 this.mostrarEndereco = !this.mostrarEndereco
                 this.enderecoCliente = result.data
@@ -190,7 +217,7 @@ export default {
         },
 
         async deletarEndereco (iD_end, iD_cliente) {
-            await axios.delete(`https://feijoneswebapi.azurewebsites.net/api/endereco/${iD_end}`)
+            await axios.delete(`https://feijones.azurewebsites.net/api/endereco/${iD_end}`)
             this.mostrarEnderecos (iD_cliente)
         },
 
@@ -212,6 +239,16 @@ export default {
 
     mounted () {
         this.buscarClientes()
+        this.loading  = true
+    },
+
+    watch: {
+        loading (value) {
+            if (value)
+                setTimeout( () => (this.loading = false), 1000)
+            else
+                return
+        }
     },
 
     components: {

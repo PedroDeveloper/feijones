@@ -6,23 +6,15 @@
         lazy-validation
     >
         <v-container>
-
-            
-   <div class="text-center">
-   
-    <v-dialog
-      v-model="dialog"
-      hide-overlay
-      persistent
-      width="300"
-      
-    > 
-    
-     
-    </v-dialog>
-  </div>
+            <div class="text-center">
+                <v-dialog
+                v-model="dialog"
+                hide-overlay
+                persistent
+                width="300"
+                ></v-dialog>
+            </div>
             <v-row>
-
                 <v-col
                     cols="12"
                 >
@@ -41,8 +33,6 @@
                         ></v-radio>
                     </v-radio-group>
                 </v-col>
-
-
 
                 <v-col
                     cols="12"
@@ -81,10 +71,8 @@
                         :rules="telefoneRules"
                         counter
                     ></v-text-field>            
-
                     
                 </v-col>
-
 
                 <v-col
                     cols="12"
@@ -136,8 +124,8 @@
                     >
                         Apagar Campos
                         <v-icon
-                                dark
-                                right
+                            dark
+                            right
                          >
                            mdi-cancel
                         </v-icon>
@@ -149,23 +137,19 @@
                     sm="6"
                 >
                     <v-btn
-                     class="ma-2"
-                    color="primary"
-                    
+                        class="ma-2"
+                        color="primary"
                         submit  
                         block
                         x-small
                         :disabled="!valido"
                         @click="validate()"                        
                     >
-                    Cadastrar Cliente
+                        Cadastrar Cliente
                     <v-icon
                         dark
                         right
-                     >
-                    mdi-checkbox-marked-circle
-                    </v-icon>
-
+                     >mdi-checkbox-marked-circle</v-icon>
                     </v-btn>
                 </v-col>
 
@@ -178,22 +162,21 @@
                         persistent
                         max-width="330"
                     >
+                        <v-card
+                            color="primary"
+                            dark
+                        >
+                            <v-card-text>
+                                Atualizando dados..
+                                <v-progress-circular
+                                    indeterminate
+                                    color="white"
+                                    class="mb-0"
+                                ></v-progress-circular>
 
-     <v-card
-        color="primary"
-        dark
-      >
-        <v-card-text>
-          Atualizando dados..
-        <v-progress-circular
-            indeterminate
-            color="white"
-            class="mb-0"
-          ></v-progress-circular>
-
-         </v-card-text>
-         </v-card>
-                            <v-card>
+                            </v-card-text>
+                        </v-card>
+                        <v-card>
                             <v-card-title center>{{ cadastroMensagem }}</v-card-title>
                             <v-card-actions>
                                 <v-btn color="error" @click="fecharDialog()" text x-small>Cadastrar</v-btn>
@@ -201,7 +184,6 @@
                                 <v-btn color="success" text x-small to="/listar">Visualizar Cadastros</v-btn>
                             </v-card-actions>
                         </v-card>
-
                     </v-dialog>
                 </v-col>
 
@@ -300,7 +282,7 @@ export default {
 
             console.log(dadosTratados)
 
-            await axios.post('https://feijoneswebapi.azurewebsites.net/api/cliente/', {
+            await axios.post('https://feijones.azurewebsites.net/api/cliente/', {
                 Cpf: dadosTratados.cpf,
                 Cnpj: dadosTratados.cnpj,
                 Nome: dadosTratados.nome,

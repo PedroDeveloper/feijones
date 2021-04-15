@@ -1,26 +1,44 @@
 <template>
-  <v-parallax
-    dark
-    src="httpss://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-  >
+  <v-container>
     <v-row
-      align="center"
-      justify="center"
-    >
+
+    > 
       <v-col
-        class="text-center"
         cols="12"
+        sm="6"
+        
       >
-        <h1 class="display-1 font-weight-thin mb-4">
-          Feijones
-        </h1>
-        <h4 class="subheading">
-          ADMINSTRAÇÃO
-        </h4>
+        <v-hover
+          v-slot="{ hover} "
+        >
+        
+            <v-card 
+              to="/cadastrar"
+              :elevation="hover ? 12: 2"
+              class=""
+            >
+              <v-card-title>Cadastro</v-card-title>
+              <v-card-subtitle>Area para cadastro de novos clientes</v-card-subtitle>
+            </v-card>
+        </v-hover>
       </v-col>
-      <!-- GAMBIARRA SITUACIONAL -->
+
+      <v-col>
+         <v-hover
+          v-slot="{ hover} "
+        >
+        
+            <v-card 
+              to="/listar"
+              :elevation="hover ? 12: 2"
+            >
+              <v-card-title>Visualizar Cadastros</v-card-title>
+              <v-card-subtitle>Area para visualizar cadastros e adicionar endereços aos cadastros.</v-card-subtitle>
+            </v-card>
+        </v-hover>
+      </v-col>
     </v-row>
-  </v-parallax>
+  </v-container>
 </template>
 
 <script>
